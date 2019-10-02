@@ -48,16 +48,18 @@ public class Task06
 		OntClass university = model.createClass(ns+"University");
 		
 		// ** TASK 6.2: Add "Researcher" as a subclass of "Person" **
-		
+		OntClass person = model.getOntClass(ns+"Person");
+		person.addSubClass(researcher);
 		
 		// ** TASK 6.3: Create a new property named "worksIn" **
-		
+		Property pWorksIn = model.createProperty(ns+"worksIn");
 		
 		// ** TASK 6.4: Create a new individual of Researcher named "Jane Smith" **
-		
+		Individual janeSmith = researcher.createIndividual(ns+"Jane Smith");
 		
 		// ** TASK 6.5: Add to the individual JaneSmith the fullName, given and family names **
-		
+		janeSmith.addLiteral(VCARD.FN, "Jane Smith");
+		janeSmith.addLiteral(VCARD.Given, "Jane");
 		janeSmith.addLiteral(VCARD.Family, "Smith");
 		// ** TASK 6.6: Add UPM as the university where John Smith works **
 		Individual johnSmith = model.getIndividual(ns+"JohnSmith");
